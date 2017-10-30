@@ -1,0 +1,1012 @@
+# Cryptocurrency-Online-World-Telegram-bot
+Multi purpose telegram bot written in MoonScript/lua and licenced under the GNU General Public License.
+
+[Public bot](https://telegram.me/CryptocurrencyOnlineWorldBot)
+
+[Website](https://github.com/DeibyCastrillon/bot-telegram/edit/master/README.md)
+
+Tabla de contenido
+
+* [Setup](#setup)
+* [Ranks](#ranks)
+* [Telegram Cli](#telegram-cli)
+* [Database](#database)
+* [Plugins](#plugins)
+* [Support and development](#support-and-development)
+* [Special thanks to](#special-thanks-to)
+* [Collaborators](#collaborators)
+* [Other projects](#other-projects)
+
+# Setup
+
+Clone Cryptocurrency Online World !
+
+```bash
+cd $HOME
+git clone https://github.com/Imandaneshi/jack-telegram-bot.git
+cd jack-telegram-bot
+```
+install it!
+
+```
+chmod +x install.sh
+./install.sh
+```
+[Manual installation](https://github.com/SEEDTEAM/Cryptocurrency-Online-World-telegram-bot/wiki/Manual-installation)
+
+Add your bot token in config.moon
+
+```MoonScript
+telegram_api_key: "Your bot token here"
+```
+
+Add your telegram id to admins table in config.moon
+
+```MoonScript
+admins: {
+    367238407
+    406213264
+    --your id
+  }
+```
+
+Run it !
+```
+chmod +x run.sh
+./run.sh
+```
+
+### options
+Use `./run.sh --help` for available options
+
+# Ranks
+
+ Ranks | Permissions      |
+------ | ---------------- |
+ Admin | Has access to everything
+ Premium | Has access to premium feature
+ Normal user | Has access to public feature
+ Blacklisted | Bot will ignore blacklisted users
+
+# Telegram cli
+
+*If it's first time you are installing telegram-cli*
+
+deberias `libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make` instalar
+
+
+```
+ sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make
+```
+
+Install telegram-cli using `./install.sh`
+
+Run it
+```
+./tg.sh
+```
+Ingrese su número de teléfono y código de conformación
+
+Y complemento de descomentar `telegramCli` in config.moon
+
+_Puedes cambiar el puerto en tg.sh_
+
+Puede enviar comandos a telegram-cli usando su api bot
+
+Few examples
+```
+#tg msg user#id367238407 <text>
+#tg msg channel#id367238407 <text>
+#tg msg chat#id367238407 <text>
+#tg resolve_username username
+#tg chat_del_user chat#id367238407 user#id367238407
+```
+
+[Telegram CLI Commands](https://github.com/vysheng/tg/wiki/Telegram-CLI-Commands)
+
+# Database
+
+Cryptocurrency Online World usa redis como base de datos
+
+Aquí están los datos
+
+**Chats**
+
+`bot:chats` >Lista de todos los chats (grupos,supergrupos,privados)
+
+`bot:privates` > Lista de todos los chats privados
+
+`bot:groups` > Lista de todos los grupos
+`bot:supergroups` > Lista de todos los supergrupos
+
+`bot:inline_users` > Lista de todos los usuarios en línea
+
+`bot:callback_users` > Lista de todos los usuarios de devolución de llamada
+
+**chat_id info**
+
+`bot:chats:chat_id`
+
+1. title
+2. type
+
+**user_id info**
+
+`bot:users:user_id`
+
+1. first_name
+2. last_name
+3. username
+
+Esta información se actualizará en cada mensaje
+
+`bot:total_inline_from_user:msg.from.id` >  
+
+**bot estadisticas**
+
+`bot:total_messages` > Número de bot totales de mensajes recibidos
+
+`bot:total_inlines` > Número total de solicitudes en línea
+
+`bot:total_callbacks` > Número de solicitudes de devolución de llamada totales
+
+**chat_id msg estadísticas**
+
+`bot:total_chat_msgs:chat_id` > Número de bot totales de mensajes recibidos en chat_id
+
+`"bot:total_users_msgs_in_chat:chat_id:user_id"` > Número de bot totales de mensajes recibidos en chat_id de user_id
+
+**chat_id miembros**
+
+`bot:chatchat_id` > lista dechat_id miembros
+
+[How to backup,restore,secure,stablize redis DB](https://github.com/SEEDTEAM/TeleSeed/wiki/Redis)
+
+# Plugins
+
+Plugins list
+* [9gag](#9gag)
+* [Admin](#admin)
+* [Anime](#anime)
+* [Bing](#bing)
+* [Calculator](#calculator)
+* [Cat](#cat)
+* [Chatter](#chatter)
+* [Code](#code)
+* [Commit](#commit)
+* [Currency](#currency)
+* [Dogify](#dogify)
+* [DuckGo](#duckgo)
+* [Echo](#echo)
+* [Giphy](#giphy)
+* [Github](#github)
+* [Google](#google-search)
+* [Help](#help)
+* [Imdb](#imdb)
+* [Instagram](#instagram)
+* [Ipinfo](#ip-info)
+* [Lastfm](#lastfm)
+* [Linkshortener](#link-shortener)
+* [lmgtfy](#lmgtfy)
+* [Location](#location)
+* [Me](#me)
+* [Meme](#meme)
+* [Moon](#moon)
+* [Poll](#poll)
+* [Qrcode](#qrcode)
+* [Reactions](#reactions)
+* [Reddit](#reddit)
+* [Remind](#remind)
+* [Set](#set)
+* [Shell](#shell)
+* [Slap](#slap)
+* [Spotify](#spotify)
+* [Stats](#stats)
+* [Sticker](#sticker)
+* [Talk](#talk)
+* [Telegram-Cli](#telegramcli)
+* [Time](#time)
+* [Translate](#translate)
+* [Time](#time)
+* [Translate](#Translate)
+* [Urban dictionary](#urban-dictionary)
+* [Weather](#weather)
+* [Webshot](#webshot)
+* [Who](#who)
+* [Wikipedia](#wikipedia)
+* [Youtube](#youtube)
+
+
+### 9gag
+
+Enviar una imagen aleatoria desde 9gag
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/9gag`
+
+### Admin
+
+Plugin para administradores
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  N    |        N         |         Y          |    Y
+
+**Commands**
+
+`/bot`
+
+>Devuelve el estado de Bot
+
+`/admin reload`
+
+>Recarga bot
+
+`/plugins <Plugin_name> <chat_id> <true|false>`
+
+>True desactivará plugin `<Plugin_name>` on chat `<chat_id>`
+
+`/blacklist <user_id>`
+
+>Este comando mostrará la lista negra <user_id>
+>>También se puede usar por respuesta
+
+`/bc <chat_id> <text>`
+
+>este comando enviará `<text>` to `<chat_id>`
+>>Markdown está habilitado
+
+>>use @channel_username para enviar mensajes a canales
+
+`/broadcast <msg>`
+>Este comando enviará mensajes a todos los chats
+
+`/editmsg <new msg>`
+
+>Editar mensaje
+>> Usar en respuesta
+
+### Anime
+
+Anime plugin (hummingbird.me)
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+
+**Commands**
+
+`/anime search <anime name>`
+
+> Para buscar
+
+`/anime pic <query>`
+
+> Buscará una consulta
+
+`/anime pic`
+
+> Enviará una foto de anime al azar
+
+### Bing
+
+Bing Search
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         N          |    Y
+
+
+**Commands**
+
+`/bing <terms>`
+
+### Calculator
+
+Devuelve soluciones a expresiones matemáticas
+
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/calc <expression>`
+
+### Cat
+
+Devuelve un gato
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        O         |         Y          |    Y
+
+**Commands**
+
+`/cat`
+
+### Chatter
+
+Habla con el Bot En Español
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`bot_first_name, <text>`
+
+`bot_username, <text>`
+
+>Cryptocurrency, Como estas ?
+
+>@CryptocurrencyOnlineWorldBot, Como Estas ?
+>>también puede activar el plugin de chatter hablando con bot en privado o respondiendo sobre sus mensajes en grupos
+
+### Code
+
+Envíe el código en formato de imagen con soporte para resaltador.
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         N          |    N
+
+
+**Commands**
+
+`/code <language> <code>`
+
+
+### Commit
+
+Envía el a commit.
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         N          |    Y
+
+
+**Commands**
+
+`/commit`
+
+
+### Currency
+
+>Convertidor de tasa de cambio
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/cash <amount> <from> to <to>`
+
+>Devoluciones de tasas de cambio para varias monedas
+
+### Dogify
+
+
+>Crea una imagen de doge con tus palabras
+
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`/dogify <your/words/with/slashes>`
+
+### DuckGo
+
+Búsqueda de DuckDuckGo
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         N          |    Y
+
+
+**Commands**
+
+`/duckduckgo <terms>`
+
+`/duckgo <terms>`
+
+### Echo
+
+Texto de devoluciones
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/echo <text>`
+
+>Markdown está habilitado
+
+
+### Fortune
+
+Linux Fortunes
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         N          |    Y
+
+**Commands**
+
+`/fortunes`
+
+## Get
+
+Recupera las variables guardadas con /set
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`/return (value_name)`
+
+### Giphy
+
+¡Devuelve un GIF de giphycom!
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    N
+
+**Commands**
+
+`/giphy`
+
+>Devuelve un GIF aleatorio
+
+`/giphy <query>`
+
+>Returns a GIF about <query>
+
+### Github
+
+Returns info about GitHub repo
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |       N          |         Y          |    Y
+
+
+**Commands**
+
+`/github <repo>`
+
+>/gitrepo SEEDTEAM/Cryptocurrency Online World
+
+### Google search
+
+búsqueda de Google
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    Y
+
+
+**Commands**
+
+`/google <terms>`
+
+`/g <terms>`
+
+### Greeting
+
+Acerca y saludo
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`/about`
+
+>Información sobre tu bot
+
+`Hola bot_first_name`
+
+`Bye bot_first_name`
+
+### Help
+
+Devuelve información sobre otros complementos
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  N    |        N         |         Y          |    Y
+
+
+**Commands**
+
+`/help`
+
+>Devolverá una breve lista de complementos
+
+`/help all`
+
+>Devolverá la lista completa de complementos con sus comandos
+
+`/help <plugin_name>`
+
+>Devolverá información sobre ese complemento
+
+### IMDB
+
+Devuelve información sobre la película de IMDB y su cartel
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+
+**Commands**
+
+`/imdb`
+
+### Instagram
+
+Buscar usuarios en Instagram
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         N          |    Y
+
+**Commands**
+
+`/insta <username>`
+
+>Devolver información de usuario
+
+### IP info
+
+Devuelve la información de dominio o IP dada
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    Y
+
+
+**Commands**
+
+`/ip <IP|domain>`
+
+### lastfm
+
+[RadioLastfm](https://last.fm)
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    Y
+
+**Commands**
+
+`/lastfm`
+
+Devuelve lo que eres o estuviste escuchando por última vez
+
+`/lastfm <username>`
+
+Devuelve lo que <username> está o estaba escuchando por última vez
+
+`/lastfm set <username>`
+
+Configurará su nombre de usuario
+
+`/lastfm rem`
+
+Eliminará su nombre de usuario
+
+### Link shortener
+
+Devoluciones Acortar enlace
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    Y
+
+
+**Commands**
+
+`/shorten <url>`
+
+>/shorten https://github.com/DeibyCastrillon/bot-telegram/edit/master/README.md
+
+### Lmgtfy
+
+Déjame google eso para ti!
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+### Location
+
+Envía datos de ubicación
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+
+**Commands**
+
+`/loc <query>`
+
+`/location <query>`
+
+### Me
+
+Tu perfil en telegram!
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+
+**Commands**
+
+`/me <parameter> <query>`
+
+>/me facebook CryptocurrencyOnlineWorldBot
+
+`/me <parameter> del`
+
+>Eliminará <parametro>
+
+`/me`
+
+>Devolverá su perfil y las estadísticas de msg
+
+_También puede ser activado por respuesta_
+
+### Poll
+
+Create a poll
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         N          |    N
+
+
+**Commands**
+
+`/poll new <question>`
+
+>Create a new poll
+
+`/poll add <option>`
+
+>Added a answer option
+
+`/poll del`
+
+>Eliminar o terminar la encuesta
+
+`/poll`
+
+>Muestra la encuesta
+
+### QRcode
+
+>Enviar un QRcore
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         N          |    N
+
+
+**Commands**
+
+`/qr <text>`
+
+>Enviar un QRcore
+
+### Reactions
+
+Reacciones
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/reactions`
+
+> Lista de devoluciones de reacciones
+
+### Remind
+
+Reminder
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+
+**Commands**
+
+`/remind <delay (value|mh)>  <text>`
+
+>/remind 1h test
+
+>/remind 1m test
+
+>/remind 1h30m test
+
+>>This plugin will save data in Redis(database) So It even works after Bot crashed or anything happen
+
+### set
+
+Plugin for saving values
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`/set <value_name> <data>`
+
+### Shell
+
+Ejecutar comandos de terminal
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  N    |        N         |         N          |    N
+
+**Commands**
+
+`/shell <Command>`
+
+>/shell date
+
+### Slap
+
+Abofetear a alguien
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`/slap`
+
+>By reply
+
+`/slap <name>`
+
+### Spotify
+
+Spotify plugin
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        O         |         Y          |    Y
+
+
+**Commands**
+
+`/spotify get <track name(para búsqueda)>`
+
+>Devuelve la vista previa de esa canción (solo 30 segundos)
+
+`/spotify track <track name(para búsqueda)>`
+
+>Devuelve información de la pista y la imagen
+
+`/spotify album <album name(for search)>`
+
+>Devuelve la información del álbum y la imagen
+
+`/spotify artist <artist name(para búsqueda)>`
+
+>Devuelve la información del artista y la imagen
+
+`/spotify playlist <playlist name(para búsqueda)>`
+
+>Devuelve la información y la imagen de la lista de reproducción
+
+
+### Stats
+
+Estadísticas de mensajes de chat
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+
+**Commands**
+
+`/chatstats`
+
+>Devuelve una lista de miembros con sus estadísticas de msg
+
+### Sticker
+
+Devuelve una pegatina con tu texto
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+**Commands**
+
+`/sticker <text>`
+
+### Talk
+
+Devuelve la voz
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+
+**Commands**
+
+`/tts <text>`
+
+### TelegramCli
+
+Controla una cuenta de telegrama real
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  N    |        N         |         N          |    N
+
+**Commands**
+
+`/tg <Telegram-cli command`
+
+[More info](#telegram-cli)
+
+### Time
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/time <location>`
+
+### Translate
+
+Traducir Yandex
+
+listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    Y
+
+`/translate <language> <text>`
+
+>Traducirá texto a lenguaje
+
+`/translate <language>`
+
+<language> examples:
+
+>es para traducir texto al inglés
+
+>ar-en para traducir texto del árabe al inglés
+
+>Puedes usar ambos
+
+>Se puede usar respondiendo a un mensaje
+
+### Urban dictionary
+
+
+Devuelve la definición superior del Diccionario Urbano.
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+
+**Commands**
+
+`/ud <query>`
+
+
+### weather
+
+Devuelve el clima actual
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+**Commands**
+
+`/weather <city>`
+
+
+### Webshot
+
+Retoma la captura de pantalla del sitio web dado
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         Y          |    N
+
+
+**Commands**
+
+`/webshot <url>`
+
+
+### Who
+
+Devuelve información sobre el usuario y el chat
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    Y
+
+
+**Commands**
+
+`/who`
+
+### Wikipedia
+
+Devuelve resultados de wikipedia.com
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        N         |         Y          |    N
+
+
+**Commands**
+
+`/wiki <query>`
+
+`/wikipedia <query>`
+
+
+### Youtube
+
+Devuelve resultados de youtube.com
+
+Listed | Requires API KEY | Enabled by default | inline
+------ | ---------------- | ------------------ | ------
+  Y    |        Y         |         N          |    Y
+
+
+**Commands**
+
+`/youtube get <video name(for search)>`
+
+`/youtube dl <video name(for download)>`
+
+
+# Special thanks to
+
+[Deiby](https://github.com/DeibyCastrillon)
+
+[Alneily](@SheenaTorres)
