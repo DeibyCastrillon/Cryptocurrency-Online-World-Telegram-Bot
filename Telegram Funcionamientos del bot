@@ -37,7 +37,7 @@ chmod +x install.sh
 Add your bot token in config.moon
 
 ```MoonScript
-telegram_api_key: "Your bot token here"
+telegram_api_key: "368046234:AAFfnTFfMHACJ6h_0aapFv3NXmP5eLUPbE8"
 ```
 
 Add your telegram id to admins table in config.moon
