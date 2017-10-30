@@ -1,0 +1,111 @@
+return {
+	bot_api_key =  ' ' ,
+	google_api_key =  ' ' ,
+	google_cse_key =  ' ' ,
+	lastfm_api_key =  ' ' ,
+	owm_api_key =  ' ' ,
+	biblia_api_key =  ' ' ,
+	thecatapi_key =  ' ' ,
+	nasa_api_key =  ' ' ,
+	yandex_key =  ' ' ,
+	simsimi_key =  ' ' ,
+	simsimi_trial =  verdadero ,
+	time_offset =  0 ,
+	lang =  ' en ' ,
+	- Si cambia esto, asegúrese de modificar también launch-tg.sh.
+	cli_port =  4567 ,
+	admin =  00000000 ,
+	admin_name =  ' Deiby Castrillon ' ,
+	log_chat =  nil ,
+	about_text =  [[
+Soy Cryptocurrency Online World, el bot de Telegram multiusos y bursátil.
+Envía / ayuda para comenzar.
+]] 	,
+	errors = {
+		connection =  ' Error de conexión. ' ,
+		results =  ' No se encontraron resultados. ' ,
+		argumento =  ' argumento inválido. ' ,
+		sintaxis =  ' Sintaxis inválida. ' ,
+		chatter_connection =  ' I don \' t ganas de hablar en este momento. ' ,
+		chatter_response =  ' I don \' t sabe qué decir a eso. '
+	},
+	saludos = {
+		[ ' Hola, #NAME. ' ] = {
+			' hola ' ,
+			' oye ' ,
+			' sup ' ,
+			' hola ' ,
+			' buenos días ' ,
+			' buen día ' ,
+			' buenas tardes ' ,
+			' buenas tardes '
+		},
+		[ ' Adiós, # NAME. ' ] = {
+			' adios ' ,
+			' más tarde ' ,
+			'te veo ' ,
+			' buenas noches '
+		},
+		[ ' Bienvenido de nuevo, #NAME. ' ] = {
+			' I \' m Inicio ' ,
+			' I \' m Regreso '
+		},
+		[ ' Usted \' De nada, #NOMBRE. ' ] = {
+			' gracias ' ,
+			' gracias '
+		}
+	},
+	moderación = {
+		administradores = {
+			[ ' 00000000 ' ] =  ' Usted '
+		},
+		errors = {
+			antisquig =  ' Este grupo es solo en inglés. ' ,
+			moderación =  ' No modero este grupo. ' ,
+			not_mod =  ' Este comando debe ser ejecutado por un moderador. ' ,
+			not_admin =  ' Este comando debe ser ejecutado por un administrador. ' ,
+		},
+		admin_group =  - 00000000 ,
+		realm_name =  ' My Realm ' ,
+		antisquig =  falso
+	},
+	complementos = {
+		' control.lua ' ,
+		' blacklist.lua ' ,
+		' about.lua ' ,
+		' floodcontrol.lua ' ,
+		' ping.lua ' ,
+		' whoami.lua ' ,
+		' nick.lua ' ,
+		' echo.lua ' ,
+		' gSearch.lua ' ,
+		' gImages.lua ' ,
+		' gMaps.lua ' ,
+		' youtube.lua ' ,
+		' wikipedia.lua ' ,
+		' hackernews.lua ' ,
+		' imdb.lua ' ,
+		' calc.lua ' ,
+		' urbandictionary.lua ' ,
+		' time.lua ' ,
+		' eightball.lua ' ,
+		' reactions.lua ' ,
+		' dice.lua ' ,
+		' reddit.lua ' ,
+		' xkcd.lua ' ,
+		' slap.lua ' ,
+		' commit.lua ' ,
+		' pun.lua ' ,
+		' pokedex.lua ' ,
+		' bandersnatch.lua ' ,
+		' currency.lua ' ,
+		' cats.lua ' ,
+		' hearthstone.lua ' ,
+		' shout.lua ' ,
+		' apod.lua ' ,
+		' patterns.lua ' ,
+		- Pon nuevos complementos sobre esta línea.
+		' help.lua ' ,
+		' saludos.lua '
+	}
+}
